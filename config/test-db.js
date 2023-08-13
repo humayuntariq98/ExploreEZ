@@ -16,4 +16,8 @@ try {
 
 const testData = {
     name: 'Shanghai',
+    favoriteSpots: 'downtown',
+    budget: 34000,
 }
+
+createDestination(testData);

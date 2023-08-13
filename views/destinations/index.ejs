@@ -10,7 +10,7 @@
     <% allDestinations.forEach(d => {  %>
         <tr>
             <td>
-                <a href="/destinations/<%= d._id %>"><% d.name%></a>
+                <a href="/destinations/<%= d._id %>"><%= d.name%></a>
             </td>
             <td><%= d.favoriteSpots%></td>
             <td>Expect to spend $<%= d.budget %></td>
