@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Favorite Spots</th>
+            <th>Budget</th>
+        </tr>      
+    </thead>
+    <% allDestinations.forEach(d => {  %>
+        <tr>
+            <td>
+                <a href="/destinations/<%= d._id %>"><% d.name%></a>
+            </td>
+            <td><%= d.favoriteSpots%></td>
+            <td>Expect to spend $<%= d.budget %></td>
+        </tr>
+   <% }) %>
+</table>
+<%- include('../partials/footer') %>

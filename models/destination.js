@@ -39,7 +39,7 @@ const destinationSchema = new Schema ({
         min: 1000,
         max: 1000000,
     },
-    reviews: [ReviewSchema],
+    reviews: [reviewSchema],
 }, {
     timestamps: true,
 } );
