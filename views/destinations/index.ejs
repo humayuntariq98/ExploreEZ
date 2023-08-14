@@ -1,27 +1,31 @@
 <%- include('../partials/header') %>
 <table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Favorite Spots</th>
-            <th>Budget</th>
-            <th>Delete</th>
-        </tr>      
-    </thead>
-    <% allDestinations.forEach(d => {  %>
-        <tr>
-            <td>
-                <a href="/destinations/<%= d._id %>"><%= d.name%></a>
-            </td>
-            <td><%= d.favoriteSpots%></td>
-            <td>Expect to spend $<%= d.budget %></td>
-            <td><form action="/destinations/<%= d._id %>?_method=DELETE"
-                class="delete-form" method="POST">
-                <button type="submit">X</button>
-              </form>
-            </td>
-            
-        </tr>
-   <% }) %>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Favorite Spots</th>
+      <th>Budget</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <% allDestinations.forEach(d => {  %>
+    <div class="row">
+  <section class="card col">
+    <div class="h-180p w-180p card-img-top">Image</div>
+    <div class="card-body">
+     <h3 class="card-title"> <a href="/destinations/<%= d._id %>"><%= d.name%></a></h3>
+
+      <p class="card-text">Favorite Spots
+        <%= d.favoriteSpots%>
+      </p>
+      <p class="card-text">Expect to spend $<%= d.budget %></p>
+      <form action="/destinations/<%= d._id %>?_method=DELETE" class="delete-form" method="POST">
+        <button class="btn btn-primary" type="submit">X</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+  <% }) %>
 </table>
 <%- include('../partials/footer') %>
