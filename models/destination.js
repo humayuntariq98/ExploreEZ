@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema ({
-    date : {
+    postDate : {
         type: Date,
     }, 
     hotels : {

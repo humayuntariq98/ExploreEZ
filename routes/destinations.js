@@ -11,4 +11,6 @@ router.post('/', destinationsCtrl.create)
 
 router.get('/:id', destinationsCtrl.show)
 
+router
+
 module.exports = router;
