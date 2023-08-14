@@ -11,6 +11,6 @@ router.post('/', destinationsCtrl.create)
 
 router.get('/:id', destinationsCtrl.show)
 
-router
+router.get('/:id/edit', destinationsCtrl.edit)
 
 module.exports = router;

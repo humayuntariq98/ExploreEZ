@@ -5,6 +5,7 @@ module.exports = {
     newDestination,
     create,
     show, 
+    edit,
 }
 
 async function index(req, res){
@@ -48,6 +49,18 @@ async function show (req, res) {
       foundDestination
     })
   } catch (error) {
-    handleError(res, 'something went wrong', error)  
+    console.log(error)  
+  }
+}
+
+async function edit (req, res) {
+  try {
+    const editedDestination = await Destination.findById(req.params.id)
+    res.render('destinations/edit', {
+      title: editedDestination.name,
+     editedDestination 
+    })
+  } catch (error) {
+    console.log(error)
   }
 }

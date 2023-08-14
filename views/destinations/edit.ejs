@@ -1,0 +1,17 @@
+<%- include("../partials/header") %>
+<form action="/destinations/<%= editedDestination._id %>?_method=PUT" method="POST">
+<label>Name:
+    <input type="text" name="name" value="<%= editedDestination.name %>" required>
+</label>
+<label>Hotels
+    <input type="number" name="hotels" min="0" max="5" value="<%= editedDestination.hotels %>"  required > 
+</label>
+<label>Food
+    <input type="number" name="food" min="0" max="5" value="<%= editedDestination.food %>" required >
+</label>
+<label>Summary
+    <input type="text" name="summary" maxlength="100" required value="<%= editedDestination.summary %>">
+</label>
+<button type="submit">Edit Review</button>
+</form>
+<%- include("../partials/footer") %>
