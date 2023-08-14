@@ -3,7 +3,8 @@ var router = express.Router();
 const reviewsCtrl = require('../controllers/reviews')
 
 router.post('/destinations/:id/reviews', reviewsCtrl.create)
-router.delete('/destinations/:id', reviewsCtrl.removeReview)
+router.delete('destinations/:id/reviews/:reviewid', reviewsCtrl.removeReview)
+
 
 
 
