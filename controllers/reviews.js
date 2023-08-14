@@ -1,6 +1,9 @@
+const destination = require('../models/destination')
 const Destination = require('../models/destination')
+
 module.exports = {
     create,
+    removeReview,
 }
 
 async function create(req, res) {
@@ -18,3 +21,15 @@ async function create(req, res) {
     console.log(error)
     }
 }
+
+async function removeReview (req,res) {
+    try {
+        const destinationToAccess = await Destination.findById(req.params.id)
+        const reviewToDelete = await destinationToAccess.reviews.findIndex()
+        await destinationToAccess.reviews.slice(0,0)
+        console.log("remove Review", Destination.reviews.findById(req.params.id ))
+        res.redirect (`/destinations/${req.params.id}`)
+      } catch (error) {
+        console.log(error)
+      }
+    }

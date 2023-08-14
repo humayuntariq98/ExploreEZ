@@ -44,7 +44,7 @@
                     <td> <%=r.food%> </td>
                     <td> <%=r.summary%> </td>
                     <td><%= (r.hotels + r.food) / 2 %></td>
-                    <td><form action="/destinations/<%=r._id%>/reviews"?_method=DELETE"
+                    <td><form action="/destinations/<%=foundDestination._id%>/reviews"?_method=DELETE"
                         class="delete-form" method="POST">
                         <button type="submit">X</button>
                       </form>
