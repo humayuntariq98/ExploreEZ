@@ -7,4 +7,19 @@
     <div> Recommended Budget: </div>
     <div><%=foundDestination.budget %> </div>
 </section>
+<section>
+    <h1>Reviews</h1>
+    <form action="/destinations/<%=foundDestination._id%>/reviews" method="POST">
+        <label>Hotels
+        <input type="number" name="hotels" min="0" max="5" required > 
+    </label>
+    <label>Food
+        <input type="number" name="food" min="0" max="5" required >
+    </label>
+    <label>Summary
+        <input type="text" name="summary" maxlength="100" required >
+    </label>
+    <button type="submit">Submit Review</button>
+        </form>
+</section>
 <%- include("../partials/footer") %>
