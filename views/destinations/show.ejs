@@ -38,7 +38,7 @@
             <tbody>
             <% foundDestination.reviews.forEach(r=>{%>
                 <tr>
-                    <td><%= r.postDate %></td>     
+                    <td><%= r.postDate.toDateString() %></td>     
                     <td> <%=r.hotels%> </td>
                     <td> <%=r.food%> </td>
                     <td> <%=r.summary%> </td>

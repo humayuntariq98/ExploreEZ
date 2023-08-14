@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema ({
     postDate : {
         type: Date,
+        default: Date.now
     }, 
     hotels : {
         type: Number,

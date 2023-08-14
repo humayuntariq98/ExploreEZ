@@ -5,6 +5,7 @@
             <th>Name</th>
             <th>Favorite Spots</th>
             <th>Budget</th>
+            <th>Delete</th>
         </tr>      
     </thead>
     <% allDestinations.forEach(d => {  %>
@@ -14,6 +15,10 @@
             </td>
             <td><%= d.favoriteSpots%></td>
             <td>Expect to spend $<%= d.budget %></td>
+            <form action="/destinations/<%= d._id %>?_method=DELETE"
+                class="delete-form" method="POST">
+                <button type="submit">Delete Destination</button>
+              </form>
         </tr>
    <% }) %>
 </table>
