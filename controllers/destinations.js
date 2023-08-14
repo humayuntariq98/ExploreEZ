@@ -2,6 +2,7 @@ const Destination = require('../models/destination')
 
 module.exports = {
     index,
+    newDestination,
 }
 
 async function index(req, res){
@@ -14,4 +15,14 @@ async function index(req, res){
     } catch (error) {
       handleError(res, 'something went wrong', error)  
     }
+}
+
+async function newDestination (req,res) {
+  try {
+    res.render ('destinations/new' , {
+      title : "Add a new destination"
+    })
+  } catch (error) {
+    handleError(res, 'something went wrong', error)  
+  }
 }

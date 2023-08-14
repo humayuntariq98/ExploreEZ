@@ -1,0 +1,14 @@
+<%- include("../partials/header") %>
+<form action="/destinations" method="POST">
+    <label> Destination Name
+        <input type="text" name="name" required>
+    </label>
+    <label> Favorite Spots
+        <input type="text" name="favoriteSpot">
+    </label>
+    <label> Recommended Budget
+        <input type="number" name="budget" min="1000" max="1000000">
+    </label>
+    <button type="submit">Add Destination</button>
+</form>
+<%- include("../partials/footer") %>
