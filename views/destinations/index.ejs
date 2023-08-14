@@ -15,10 +15,12 @@
             </td>
             <td><%= d.favoriteSpots%></td>
             <td>Expect to spend $<%= d.budget %></td>
-            <form action="/destinations/<%= d._id %>?_method=DELETE"
+            <td><form action="/destinations/<%= d._id %>?_method=DELETE"
                 class="delete-form" method="POST">
                 <button type="submit">Delete Destination</button>
               </form>
+            </td>
+            
         </tr>
    <% }) %>
 </table>
