@@ -7,7 +7,7 @@ module.exports = {
     show, 
     edit,
     update,
-    removeDestination
+  removeDestination
 }
 
 async function index(req, res){
