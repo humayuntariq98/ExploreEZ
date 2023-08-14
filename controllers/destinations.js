@@ -7,6 +7,7 @@ module.exports = {
     show, 
     edit,
     update,
+    removeDestination
 }
 
 async function index(req, res){
@@ -75,6 +76,18 @@ async function update (req,res){
     editedDestination.budget = destinationData.budget
     await editedDestination.save()
     res.redirect(`/destinations/${req.params.id}`)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function removeDestination (req,res) {
+  try {
+    // const destinationDeleted = await Destination.findById(req.params.id)
+    // await Destination.deleteOne(destinationDeleted)
+    await Destination.deleteOne(Destination.findById(req.params.id));
+    console.log("remove Destination", Destination.findById(req.params.id ))
+    res.redirect ("/destinations")
   } catch (error) {
     console.log(error)
   }

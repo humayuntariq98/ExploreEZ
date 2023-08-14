@@ -13,5 +13,7 @@ router.get('/:id', destinationsCtrl.show)
 
 router.get('/:id/edit', destinationsCtrl.edit)
 
+router.delete('/:id',destinationsCtrl.removeDestination)
+
 router.put('/:id', destinationsCtrl.update)
 module.exports = router;
