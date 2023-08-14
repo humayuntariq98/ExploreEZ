@@ -6,6 +6,7 @@ module.exports = {
     create,
     show, 
     edit,
+    update,
 }
 
 async function index(req, res){
@@ -60,6 +61,20 @@ async function edit (req, res) {
       title: editedDestination.name,
      editedDestination 
     })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function update (req,res){
+  try {
+    const destinationData = {...req.body}
+    const editedDestination = await Destination.findById(req.params.id)
+    editedDestination.name = destinationData.name
+    editedDestination.favoriteSpots = destinationData.favoriteSpots
+    editedDestination.budget = destinationData.budget
+    await editedDestination.save()
+    res.redirect(`/destinations/${req.params.id}`)
   } catch (error) {
     console.log(error)
   }

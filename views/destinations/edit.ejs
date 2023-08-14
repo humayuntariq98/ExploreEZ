@@ -3,15 +3,12 @@
 <label>Name:
     <input type="text" name="name" value="<%= editedDestination.name %>" required>
 </label>
-<label>Hotels
-    <input type="number" name="hotels" min="0" max="5" value="<%= editedDestination.hotels %>"  required > 
+<label>Favorite Spots
+    <input type="text" name="favoriteSpots" value="<%= editedDestination.favoriteSpots %>"  required > 
 </label>
-<label>Food
-    <input type="number" name="food" min="0" max="5" value="<%= editedDestination.food %>" required >
+<label>Budget
+    <input type="number" name="budget" min="1000" max="1000000" value="<%= editedDestination.budget %>" required >
 </label>
-<label>Summary
-    <input type="text" name="summary" maxlength="100" required value="<%= editedDestination.summary %>">
-</label>
-<button type="submit">Edit Review</button>
+<button type="submit">Edit Destination</button>
 </form>
 <%- include("../partials/footer") %>
