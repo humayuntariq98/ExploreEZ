@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema ({
     date : {
         type: Date,
-        required: true
     }, 
     hotels : {
         type: Number,

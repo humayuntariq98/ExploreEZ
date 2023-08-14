@@ -22,4 +22,31 @@
     <button type="submit">Submit Review</button>
         </form>
 </section>
+<section>
+    <% if (foundDestination.reviews.length) { %>
+        <table>
+            <thead>
+                <tr>
+                    <!-- <th>Date</th>
+                    <th>Time</th> -->
+                    <th>Hotel</th>
+                    <th>Food</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% foundDestination.reviews.forEach(r=>{%>
+                <tr>
+                 
+                    <td> <%=r.hotels%> </td>
+                    <td> <%=r.food%> </td>
+                    <td> <%=r.summary%> </td>
+                </tr>
+          <%  }) %>
+         </tbody>
+        </table>
+        <% }else { %>
+            <p>No reviews yet!</p>
+  <%  } %>
+</section>
 <%- include("../partials/footer") %>
