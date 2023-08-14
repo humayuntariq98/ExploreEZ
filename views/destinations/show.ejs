@@ -6,6 +6,8 @@
     <div><%=foundDestination.favoriteSpots %></div>
     <div> Recommended Budget: </div>
     <div><%=foundDestination.budget %> </div>
+    <button><a href="/destinations/<%= foundDestination._id %>/edit">Update Destination</a>
+    </button>
 </section>
 <section>
     <h1>Reviews</h1>
@@ -32,7 +34,6 @@
                     <th>Food</th>
                     <th>Summary</th>
                     <th>Total Rating</th>
-                    <th><a href="/destinations/<%= foundDestination._id %>/edit">Details</a></th>
                 </tr>
             </thead>
             <tbody>
