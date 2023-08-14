@@ -9,4 +9,6 @@ router.get('/new', destinationsCtrl.newDestination)
 
 router.post('/', destinationsCtrl.create)
 
+router.get('/:id', destinationsCtrl.show)
+
 module.exports = router;

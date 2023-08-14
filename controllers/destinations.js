@@ -4,6 +4,7 @@ module.exports = {
     index,
     newDestination,
     create,
+    show, 
 }
 
 async function index(req, res){
@@ -34,6 +35,18 @@ async function create (req,res){
     const newDestination = await Destination.create(destinationData)
     // console.log("creatingDestination", newDestination)
     res.redirect('/destinations')
+  } catch (error) {
+    handleError(res, 'something went wrong', error)  
+  }
+}
+
+async function show (req, res) {
+  try {
+    const foundDestination = await Destination.findById(req.params.id)
+    res.render('destinations/show', {
+      title: foundDestination.name,
+      foundDestination
+    })
   } catch (error) {
     handleError(res, 'something went wrong', error)  
   }
