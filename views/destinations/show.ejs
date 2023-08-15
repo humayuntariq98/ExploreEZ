@@ -34,6 +34,8 @@
                     <th>Food</th>
                     <th>Summary</th>
                     <th>Total Rating</th>
+                    <th> Delete Review</th>
+                    <th> Update Review</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,7 +54,7 @@
                         <button type="submit">X</button>
                       </form>
                     </td>
-
+                    <td> <a href="/destinations/<%=foundDestination._id%>/reviews/<%=r._id%>/edit">Edit</a></td>
                 </tr>
           <%  }) %>
          </tbody>
