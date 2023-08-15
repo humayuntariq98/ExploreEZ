@@ -13,7 +13,7 @@
                         <p class="card-text text-center">Expect to spend $<%= d.budget %></p> 
                         <div class="d-flex justify-content-between"> 
                             <form action="/destinations/<%= d._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button class="btn delete-button" type="submit"><i class="fa-regular fa-circle-xmark"></i></button>
+                                <button class="btn  delete-button" type="submit">X</button>
                             </form>
                             <a href="/destinations/<%= d._id %>" class="more-button">More</a>
                         </div>
