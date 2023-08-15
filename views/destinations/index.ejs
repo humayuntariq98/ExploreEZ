@@ -1,31 +1,27 @@
 <%- include('../partials/header') %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Favorite Spots</th>
-      <th>Budget</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <% allDestinations.forEach(d => {  %>
-    <div class="row">
-  <section class="card col">
-    <div class="h-180p w-180p card-img-top">Image</div>
-    <div class="card-body">
-     <h3 class="card-title"> <a href="/destinations/<%= d._id %>"><%= d.name%></a></h3>
-
-      <p class="card-text">Favorite Spots
-        <%= d.favoriteSpots%>
-      </p>
-      <p class="card-text">Expect to spend $<%= d.budget %></p>
-      <form action="/destinations/<%= d._id %>?_method=DELETE" class="delete-form" method="POST">
-        <button class="btn btn-primary" type="submit">X</button>
-      </form>
+<div class="container"> 
+    <div class="row"> 
+        <% allDestinations.forEach(d => {  %>
+            <div class="col-md-4 mb-4"> 
+                <section class="card shadow"> 
+                    <div class="card-img-top test bg-dark">
+                        <img src="<%= d.image %>" alt="<%= d.name %> Image">
+                    </div>
+                    <div class="card-body  bg-light">
+                        <h3 class="card-title text-center"><%= d.name%></a></h3> 
+                        <p class="card-text text-center"><span class="card-info-text">Favorite Spots: </span> <%= d.favoriteSpots%></p> 
+                        <p class="card-text text-center">Expect to spend $<%= d.budget %></p> 
+                        <div class="d-flex justify-content-between"> 
+                            <form action="/destinations/<%= d._id %>?_method=DELETE" class="delete-form" method="POST">
+                                <button class="btn  delete-button" type="submit">X</button>
+                            </form>
+                            <a href="/destinations/<%= d._id %>" class="more-button">More</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        <% }) %>
     </div>
-  </section>
 </div>
-
-  <% }) %>
-</table>
 <%- include('../partials/footer') %>
+

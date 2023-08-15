@@ -1,3 +1,4 @@
+
 function handleError(res, message, error){
     res.render('/error', {
         message,
@@ -8,3 +9,4 @@ function handleError(res, message, error){
 module.exports = {
     handleError
 }
+
