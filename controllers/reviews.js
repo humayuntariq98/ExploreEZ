@@ -3,7 +3,7 @@ const Destination = require('../models/destination')
 
 module.exports = {
     create,
-    removeReview,
+    // removeReview,
     editReview,
 }
 
@@ -23,27 +23,41 @@ async function create(req, res) {
     }
 }
 
-async function removeReview (req,res) {
-    // console.log("my name is humayun")
-    try {
-        const destinationToAccess = await Destination.findById(req.params.id)
-        const reviewToDelete = req.query.reviewid
-        if (!reviewIdToDelete) {
-          return res.status(400).send("Review ID not provided");
-        }
-        // review to delete should have the mongo id made available from the show pag. you can pass it as req.params or you can pass it through the form as req.body
-        const reviewIndex = Destination.reviews.findIndex((review) => {
-          review._id.toString() === reviewIdToDelete
-          
-        })
-      destinationToAccess.reviews.pull(req.params.reviewid)
-        await destinationToAccess.save()
-        res.redirect (`/destinations/${req.params.id}`)
-      } catch (error) {
-        console.log(error)
-      }
-    }
+// async function removeReview(req, res) {
+//     try {
+//       const { destinationId, reviewId } = req.params;
+//       // Find the destination by its ID
+//       const destination = await Destination.findById(destinationId);
+//       // Find the index of the review within the reviews array
+//       const reviewIndex = destination.reviews.findIndex(
+//         (review) => review._id.toString() === reviewId
+//       );
+//       // Remove the review from the reviews array
+//       destination.reviews.splice(reviewIndex, 1);
+//       // Save the updated destination
+//       await destination.save();
+//       console.log("Removed review from Destination", destination);
+//       res.redirect(`/destinations/${destinationId}`);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
 
-    async function editReview (req, res){
-        
+    async function editReview(req, res) {
+        try {
+          const { destinationId, reviewId } = req.params;
+          // Find the destination by its ID
+          const destination = await Destination.findById(destinationId);
+          // Find the index of the review within the reviews array
+          const reviewIndex = destination.reviews.findIndex(
+            (review) => review._id.toString() === reviewId
+          );
+          res.render('reviews/edit', {
+            title: 'Edit Review Page', 
+            destination, 
+            reviewIndex
+          })
+        }catch (error) {
+            console.log(error)
+        }
     }
