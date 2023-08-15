@@ -1,4 +1,5 @@
 const Destination = require('../models/destination')
+const handleError = require('../util')
 
 module.exports = {
     index,

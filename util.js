@@ -4,3 +4,7 @@ function handleError(res, message, error){
         error
     })
 }
+
+module.exports = {
+    handleError
+}
