@@ -29,7 +29,7 @@
         <table>
             <thead>
                 <tr>
-                     <th>Date</th>
+                    <th>Date</th>
                     <th>Hotel</th>
                     <th>Food</th>
                     <th>Summary</th>
@@ -40,9 +40,9 @@
             <% foundDestination.reviews.forEach(r=>{%>
                 <tr>
                     <td><%= r.postDate.toDateString() %></td>     
-                    <td> <%=r.hotels%> </td>
-                    <td> <%=r.food%> </td>
-                    <td> <%=r.summary%> </td>
+                    <td> <%= r.hotels %> </td>
+                    <td> <%= r.food %> </td>
+                    <td> <%= r.summary %> </td>
                     <td><%= (r.hotels + r.food) / 2 %></td>
                     <td><form action="/destinations/<%=foundDestination._id%>/reviews/<%= r._id%>?_method=DELETE"
                         class="delete-form" method="POST">

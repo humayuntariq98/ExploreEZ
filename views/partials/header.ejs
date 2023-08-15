@@ -11,5 +11,12 @@
     <a href="/">Home</a>
     <a href="/destinations">All Destinations</a>
     <a href="/destinations/new">Add A Destination</a>
+    <% if (user) { %>
+      <a href="/"><%= user.name %></a>
+      <img src="<%= user.avatar %>" alt="user profile pic">
+      <a href="/logout">Log Out</a>
+    <% } else { %>
+      <a href='/auth/google'>Sign In with Google</a>
+    <%}%>
   </nav>
 <h1><%= title %></h1>  
