@@ -6,3 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
+.stars a {
+  opacity: 10%;
+  cursor: pointer;
+}
