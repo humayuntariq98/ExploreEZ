@@ -4,6 +4,7 @@ const Destination = require('../models/destination')
 module.exports = {
     create,
     removeReview,
+    renderEditForm
 }
 
 async function create(req, res) {
@@ -46,3 +47,24 @@ async function removeReview(req, res) {
       console.log(error);
     }
   }
+
+  async function renderEditForm(req, res) {
+    try {
+      const { destinationId, reviewId } = req.params;
+  
+      // Find the destination by its ID
+      const destination = await Destination.findById(destinationId);
+    
+      // Find the review by its ID within the reviews array
+      const review = destination.reviews.find(
+        (review) => review._id === reviewId
+      );
+    
+      // Render the edit form inside the "reviews" folder
+      res.render('reviews/edit', { destination, review, title: 'Edit Review' });
+    } catch (error) {
+      console.log(error)
+    }
+  
+  }
+  
