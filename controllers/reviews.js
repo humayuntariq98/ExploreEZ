@@ -4,6 +4,7 @@ const Destination = require('../models/destination')
 module.exports = {
     create,
     removeReview,
+    editReview,
 }
 
 async function create(req, res) {
@@ -41,4 +42,8 @@ async function removeReview (req,res) {
       } catch (error) {
         console.log(error)
       }
+    }
+
+    async function editReview (req, res){
+        
     }
