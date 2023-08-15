@@ -1,7 +1,12 @@
 const {google} = require('googleapis');
 const Destination = require('../models/destination')
+
 const places = google.places({version: 'v1', auth: 'AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y'});  
 const axios = require('axios');
+
+const handleError = require('../util')
+
+
 module.exports = {
     index,
     newDestination,
@@ -9,7 +14,7 @@ module.exports = {
     show, 
     edit,
     update,
-    removeDestination
+  removeDestination
 }
 
 async function index(req, res){
