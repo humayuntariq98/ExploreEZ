@@ -39,6 +39,7 @@ const destinationSchema = new Schema ({
         min: 1000,
         max: 1000000,
     },
+    image: {type: String},
     reviews: [reviewSchema],
 }, {
     timestamps: true,
