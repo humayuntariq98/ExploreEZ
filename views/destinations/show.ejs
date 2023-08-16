@@ -10,19 +10,24 @@
     </button>
 </section>
 <section>
-    <h1>Reviews</h1>
-    <form action="/destinations/<%=foundDestination._id%>/reviews" method="POST">
-        <label>Hotels
-        <input type="number" name="hotels" min="0" max="5" required > 
-    </label>
-    <label>Food
-        <input type="number" name="food" min="0" max="5" required >
-    </label>
-    <label>Summary
-        <input type="text" name="summary" maxlength="100" required >
-    </label>
-    <button type="submit">Submit Review</button>
-        </form>
+    <% if (user) { %>
+        <h1>Reviews</h1>
+        <form action="/destinations/<%=foundDestination._id%>/reviews" method="POST">
+            <label>Hotels
+            <input type="number" name="hotels" min="0" max="5" required > 
+        </label>
+        <label>Food
+            <input type="number" name="food" min="0" max="5" required >
+        </label>
+        <label>Summary
+            <input type="text" name="summary" maxlength="100" required >
+        </label>
+        <button type="submit">Submit Review</button>
+            </form>
+    <% } else { %>
+        <p>Log In to add reviews</p>
+     <%} %>
+    
 </section>
 <section>
     <% if (foundDestination.reviews.length) { %>
@@ -41,18 +46,18 @@
             <tbody>
             <% foundDestination.reviews.forEach(r=>{%>
                 <tr>
+                    <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
                     <td><%= r.postDate.toDateString() %></td>     
                     <td> <%= r.hotels %> </td>
                     <td> <%= r.food %> </td>
                     <td> <%= r.summary %> </td>
                     <td><%= (r.hotels + r.food) / 2 %></td>
-                    <td>
-                        <a href="/destinations/<%= foundDestination._id %>/reviews/<%= r._id %>/edit">Edit</a>
-                      </td>
+                    <% if (user?._id.equals(r.user)) { %>
                     <td><form action="/destinations/<%=foundDestination._id%>/reviews/<%= r._id%>?_method=DELETE"
                         class="delete-form" method="POST">
                         <button type="submit">X</button>
                       </form>
+                      <% } %>
                     </td>
                     <td> <a href="/destinations/<%=foundDestination._id%>/reviews/<%=r._id%>/edit">Edit</a></td>
                 </tr>

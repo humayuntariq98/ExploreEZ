@@ -21,10 +21,17 @@ const reviewSchema = new Schema ({
     },
     summary: {
         type: String,
-    }
-}, {
-timestamps: true,
-})
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+      },
+      userName: String,
+      userAvatar: String
+    }, {
+      timestamps: true
+    });
 
 const destinationSchema = new Schema ({
     name: {
