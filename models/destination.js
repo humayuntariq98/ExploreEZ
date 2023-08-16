@@ -21,10 +21,17 @@ const reviewSchema = new Schema ({
     },
     summary: {
         type: String,
-    }
-}, {
-timestamps: true,
-})
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+      },
+      userName: String,
+      userAvatar: String
+    }, {
+      timestamps: true
+    });
 
 const destinationSchema = new Schema ({
     name: {
@@ -39,6 +46,7 @@ const destinationSchema = new Schema ({
         min: 1000,
         max: 1000000,
     },
+    image: {type: String},
     reviews: [reviewSchema],
 }, {
     timestamps: true,

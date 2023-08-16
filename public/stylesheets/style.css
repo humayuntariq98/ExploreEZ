@@ -6,3 +6,138 @@ body {
 a {
   color: #00B7FF;
 }
+
+.card {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-body {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: linear-gradient(180deg, rgba(217,217,217,1) 0%, rgba(72,218,162,1) 10%, rgba(0,197,175,1) 44%, rgba(0,174,182,1) 69%, rgba(0,150,182,1) 81%);
+  overflow: hidden;
+  padding: 0;
+}
+
+.card-img-top {
+  width: 100%;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: auto;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-img-top, card-img-top img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+} 
+
+.card-text {
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+
+.card-img-top img {
+  max-height: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-image {
+  display: block;
+  min-width: 100%; 
+  min-height: 100%; 
+  max-width: none; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  object-fit: cover;
+}
+
+.navbar {
+  background-color: #4CAF50; 
+  transition: background-color 0.3s ease-in-out; 
+}
+
+.navbar-logo {
+  height: 60px; 
+  width: auto;  
+  margin-right: 10px; 
+}
+
+.navbar-brand, .nav-link {
+  color: #FFF !important; 
+  transition: transform 0.3s ease-in-out; 
+}
+
+
+.navbar-brand:hover, .nav-link:hover {
+  transform: scale(1.1);
+  color: #ddd !important; 
+}
+
+
+.nav-item.active .nav-link {
+  background-color: #45a049;
+  border-radius: 5px;
+}
+
+
+.navbar-dark .navbar-toggler-icon {
+  background-color: #FFF;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.flashy-header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.delete-button {
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3498db; 
+}
+
+.more-button {
+  background-color: #3498db; 
+  color: #fff;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  margin: 0;
+}
+.review-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-user img {
+  border-radius: 50%;
+  height: 40px;
+}
