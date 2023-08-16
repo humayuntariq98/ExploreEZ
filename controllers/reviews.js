@@ -4,7 +4,8 @@ const Destination = require('../models/destination')
 module.exports = {
     create,
     removeReview,
-    renderEditForm
+    renderEditForm,
+    updateReview,
 }
 
 async function create(req, res) {
@@ -60,20 +61,107 @@ async function removeReview(req, res) {
     try {
       const { destinationId, reviewId } = req.params;
   
-      // Find the destination by its ID
+      
       const destination = await Destination.findById(destinationId);
     
-      // Find the review by its ID within the reviews array
+      
       const review = destination.reviews.find(
-        (review) => review._id === reviewId
+        (review) => review._id.toString() === reviewId
       );
     
-      // Render the edit form inside the "reviews" folder
+     
       res.render('reviews/edit', { destination, review, title: 'Edit Review' });
     } catch (error) {
       console.log(error)
     }
   
   }
-  
 
+  async function updateReview(req, res) {
+    try {
+        const { destinationId, reviewId } = req.params;
+
+       
+        const destination = await Destination.findById(destinationId);
+
+        if (!destination) {
+            
+            res.status(404).send('Destination not found');
+            return;
+        }
+
+      
+        const reviewIndex = destination.reviews.findIndex(
+            (review) => review._id.toString() === reviewId
+        );
+        const reviewData = {...req.body};
+        destination.reviews[reviewIndex].hotels = req.body.hotels;
+        destination.reviews[reviewIndex].food = req.body.food;
+        destination.reviews[reviewIndex].summary = req.body.summary;
+        await destination.save();
+        res.redirect(`/destinations/${destinationId}`);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+}
+  
+  async function updateReview(req, res) {
+    try {
+        const { destinationId, reviewId } = req.params;
+
+       
+        const destination = await Destination.findById(destinationId);
+
+        if (!destination) {
+            
+            res.status(404).send('Destination not found');
+            return;
+        }
+
+      
+        const reviewIndex = destination.reviews.findIndex(
+            (review) => review._id.toString() === reviewId
+        );
+        const reviewData = {...req.body};
+        destination.reviews[reviewIndex].title = reviewData.title;
+        destination.reviews[reviewIndex].content = reviewData.content;
+        destination.reviews[reviewIndex].rating = reviewData.rating;
+        await destination.save();
+        res.redirect(`/destinations/${destinationId}`);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+}
+
+
+
+
+
+
+       
+        const destination = await Destination.findById(destinationId);
+
+        if (!destination) {
+            
+            res.status(404).send('Destination not found');
+            return;
+        }
+
+      
+        const reviewIndex = destination.reviews.findIndex(
+            (review) => review._id.toString() === reviewId
+        );
+        const reviewData = {...req.body};
+        destination.reviews[reviewIndex].title = reviewData.title;
+        destination.reviews[reviewIndex].content = reviewData.content;
+        destination.reviews[reviewIndex].rating = reviewData.rating;
+        console.log('destination reviews:', destination.reviews[reviewIndex]);
+        await destination.save();
+        res.redirect(`/destinations/${destinationId}`);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+}
