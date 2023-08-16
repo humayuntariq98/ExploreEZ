@@ -1,5 +1,6 @@
 
 <%- include("../partials/header") %>
+
 <h1>Reviews</h1>
         <form action="/destinations/<%=destination._id%>/reviews/<%= review._id %>?_method=PUT" method="POST">
             <label>Hotels
@@ -13,4 +14,5 @@
         </label>
         <button type="submit">Submit Review</button>
             </form>
+
 <%- include("../partials/footer") %>
