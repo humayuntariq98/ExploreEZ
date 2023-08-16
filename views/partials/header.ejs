@@ -29,6 +29,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/destinations/new">Add A Destination</a>
         </li>
+        <% if (user) { %>
+          <a href="/logout">LOG OUT</a>
+        <% } else { %>
+          <a href="/auth/google" class="login">LOG IN&nbsp;<img class="navbar-logo"src="https://i.imgur.com/FHjYyi0.png"></a>
+       <% } %>
       </ul>
     </div>
   </nav>

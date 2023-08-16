@@ -131,6 +131,13 @@ body {
   text-decoration: none;
   margin: 0;
 }
-.test {
-  
+.review-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-user img {
+  border-radius: 50%;
+  height: 40px;
 }
