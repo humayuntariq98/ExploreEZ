@@ -7,11 +7,8 @@ a {
   color: #00B7FF;
 }
 
-.stars a {
-  opacity: 10%;
-  cursor: pointer;
 
-}
+
 .card {
   width: 100%;
   max-width: 100%;
@@ -136,7 +133,30 @@ body {
   text-decoration: none;
   margin: 0;
 }
-.test {
+
   
 
+.stars {
+  display: flex;
+}
+.stars.disabled {
+pointer-events: none;
+}
+
+
+.stars a {
+  opacity: 50%;
+  cursor: pointer;
+  padding: 5px
+}
+.stars:hover a {
+  opacity: 100%;
+}
+.stars a:hover a {
+  opacity: 100%;
+}
+.stars a:hover ~ a {
+  opacity: 50%;
+}.star a.active {
+  opacity: 100%;
 }
