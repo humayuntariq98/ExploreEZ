@@ -1,6 +1,9 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #19dcea;
+  -webkit-animation: body 8s both;
+	animation: body 8s both;
 }
 
 a {
@@ -94,9 +97,22 @@ a {
   border-radius: 5px;
 }
 
+.navbar-collapse {
+  display: flex;
+  justify-content: space-between;
+}
 
 .navbar-dark .navbar-toggler-icon {
   background-color: #FFF;
+}
+.login {
+  color: #FFF !important; 
+  text-shadow: 2px 2px 4px #000; 
+}
+
+.login:hover {
+  transform: scale(1.1);
+  color: #ddd !important; 
 }
 
 body {
@@ -140,4 +156,21 @@ body {
 .review-user img {
   border-radius: 50%;
   height: 40px;
+}
+
+@-webkit-keyframes body {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;;
+  }
+}
+@keyframes body {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;;
+  }
 }
