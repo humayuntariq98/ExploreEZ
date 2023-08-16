@@ -134,29 +134,6 @@ body {
   margin: 0;
 }
 
+
   
 
-.stars {
-  display: flex;
-}
-.stars.disabled {
-pointer-events: none;
-}
-
-
-.stars a {
-  opacity: 50%;
-  cursor: pointer;
-  padding: 5px
-}
-.stars:hover a {
-  opacity: 100%;
-}
-.stars a:hover a {
-  opacity: 100%;
-}
-.stars a:hover ~ a {
-  opacity: 50%;
-}.star a.active {
-  opacity: 100%;
-}
