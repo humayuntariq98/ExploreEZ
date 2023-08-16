@@ -93,17 +93,32 @@ async function edit (req, res) {
   }
 }
 
-async function update (req,res){
+async function update(req, res) {
   try {
-    const destinationData = {...req.body}
-    const editedDestination = await Destination.findById(req.params.id)
-    editedDestination.name = destinationData.name
-    editedDestination.favoriteSpots = destinationData.favoriteSpots
-    editedDestination.budget = destinationData.budget
-    await editedDestination.save()
-    res.redirect(`/destinations/${req.params.id}`)
+    const destinationData = { ...req.body };
+    const editedDestination = await Destination.findById(req.params.id);
+    editedDestination.name = destinationData.name;
+    editedDestination.favoriteSpots = destinationData.favoriteSpots;
+    editedDestination.budget = destinationData.budget;
+
+    // Fetch updated image from Google Places API
+    const response = await axios.get('https://maps.googleapis.com/maps/api/place/textsearch/json', {
+      params: {
+        query: editedDestination.name,
+        key: 'AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y' 
+      }
+    });
+    //  TODO Store api key inside env as google places API
+    if (response.data.results && response.data.results[0] && response.data.results[0].photos) {
+      const photoReference = response.data.results[0].photos[0].photo_reference;
+      const imageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y`;
+      editedDestination.image = imageUrl;
+    }
+
+    await editedDestination.save();
+    res.redirect(`/destinations`);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
