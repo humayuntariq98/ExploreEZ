@@ -18,6 +18,7 @@ router.delete("/:id", destinationsCtrl.removeDestination);
 
 router.put("/:id", destinationsCtrl.update);
 
+//storing the reviews router inside of the destinatons router
 router.use("/:destinationId/reviews", reviewsRouter);
 
 module.exports = router;
