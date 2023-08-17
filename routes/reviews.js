@@ -1,15 +1,13 @@
-var express = require('express');
-var router = express.Router();
-const reviewsCtrl = require('../controllers/reviews')
+var express = require("express");
+var router = express.Router({mergeParams:true});
+const reviewsCtrl = require("../controllers/reviews");
 
-router.put('/destinations/:destinationId/reviews/:reviewId',reviewsCtrl.updateReview)
-router.post('/destinations/:id/reviews', reviewsCtrl.create)
+router.post("/", reviewsCtrl.create);
 
+router.delete("/:reviewId", reviewsCtrl.removeReview);
 
-router.delete('/destinations/:destinationId/reviews/:reviewId', reviewsCtrl.removeReview);
-router.get('/destinations/:destinationId/reviews/:reviewId/edit', reviewsCtrl.renderEditForm);
-router.put('/destinations/:destinationId/reviews/:reviewId',reviewsCtrl.updateReview)
+router.get("/:reviewId/edit", reviewsCtrl.renderEditForm);
 
-
+router.put("/:reviewId",reviewsCtrl.updateReview);
 
 module.exports = router;
