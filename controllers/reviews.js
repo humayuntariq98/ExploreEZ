@@ -1,5 +1,6 @@
 // const destination = require('../models/destination')
 const Destination = require("../models/destination");
+const handleError = require("../util");
 
 module.exports = {
     create,
@@ -27,8 +28,7 @@ async function create(req, res) {
         await reviewDestination.save();
         res.redirect(`/destinations/${reviewDestination._id}`);
     } catch (error) {
-    //  handleError(res, 'something went wrong', error)
-        console.log(error);
+        handleError(res, "something went wrong", error);
     }
 }
 
@@ -56,7 +56,7 @@ async function removeReview(req, res) {
         // console.log("Removed review from Destination", destination);
         res.redirect(`/destinations/${destinationId}`);
     } catch (error) {
-        console.log(error);
+        handleError(res, "something went wrong", error);
     }
 }
 
@@ -72,7 +72,7 @@ async function renderEditForm(req, res) {
 
         res.render("reviews/edit", { destination, review, title: "Edit Review" });
     } catch (error) {
-        console.log(error);
+        handleError(res, "something went wrong", error);
     }
 }
 
@@ -97,7 +97,6 @@ async function updateReview(req, res) {
         await destination.save();
         res.redirect(`/destinations/${destinationId}`);
     } catch (error) {
-        console.log(error);
-        res.status(500).send("Server error");
+        handleError(res, "something went wrong", error);
     }
 }

@@ -32,7 +32,7 @@ async function newDestination(req, res) {
             title: "Add a new destination",
         });
     } catch (error) {
-        console.log(error);
+        handleError(res, "something went wrong", error);
     }
 }
 
@@ -66,7 +66,7 @@ async function create(req, res) {
         await Destination.create(destinationData);
         res.redirect("/destinations");
     } catch (error) {
-        console.log(error);
+        handleError(res, "something went wrong", error);
     }
 }
 
@@ -78,7 +78,7 @@ async function show(req, res) {
             foundDestination,
         });
     } catch (error) {
-        console.log(error);
+        handleError(res, "something went wrong", error);
     }
 }
 
@@ -90,7 +90,7 @@ async function edit(req, res) {
             editedDestination,
         });
     } catch (error) {
-        console.log(error);
+        handleError(res, "something went wrong", error);
     }
 }
 
@@ -126,7 +126,7 @@ async function update(req, res) {
         await editedDestination.save();
         res.redirect("/destinations");
     } catch (error) {
-        console.log(error);
+        handleError(res, "something went wrong", error);
     }
 }
 
