@@ -22,10 +22,13 @@ ERD Diagram
 * NodeJS
 
 ## Getting Starting
-(link)[link]
+Try out our application and add your favorite destination!
+[ExploreEz](https://infinite-island-30535-6f15b733fb9d.herokuapp.com/)
 
 ## Future Features
--Google Auth - users sign in are able to edit/ create reviews
+* Star review ratings
+* Activity model
+* Collection of top picks
 
 
  
