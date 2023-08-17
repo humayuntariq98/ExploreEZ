@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 const destinationsCtrl = require("../controllers/destinations");
 const reviewsRouter = require("./reviews");
-/* GET users listing. */
 
 router.get("/", destinationsCtrl.index);
 
