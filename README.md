@@ -3,6 +3,7 @@ A Mongoose, Express and Node based travel application which is designed to revol
 
 ## Screenshots
 
+
 ## Technologies Used
 * BootStrap (CSS FrameWork)
 * CSS
