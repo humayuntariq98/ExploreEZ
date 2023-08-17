@@ -14,6 +14,7 @@ module.exports = {
     removeDestination,
 };
 
+//render all destinations
 async function index(req, res) {
     try {
         const allDestinations = await Destination.find({});
@@ -26,6 +27,7 @@ async function index(req, res) {
     }
 }
 
+//rendering new destination page with the form for new destination
 async function newDestination(req, res) {
     try {
         res.render("destinations/new", {
@@ -36,6 +38,7 @@ async function newDestination(req, res) {
     }
 }
 
+//create a destination and load its image from google API
 async function create(req, res) {
     const destinationData = { ...req.body };
     try {
@@ -59,8 +62,6 @@ async function create(req, res) {
             const imageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y`;
 
             destinationData.image = imageUrl;
-            // console.log('imageURL:', imageUrl)
-            // console.log('photoReference:', photoReference)
         }
 
         await Destination.create(destinationData);
@@ -70,6 +71,7 @@ async function create(req, res) {
     }
 }
 
+//finding the destination that was clicked and rendering the show page
 async function show(req, res) {
     try {
         const foundDestination = await Destination.findById(req.params.id);
@@ -82,6 +84,7 @@ async function show(req, res) {
     }
 }
 
+//finding a destination and rendering the edit page for destinations
 async function edit(req, res) {
     try {
         const editedDestination = await Destination.findById(req.params.id);
@@ -94,6 +97,7 @@ async function edit(req, res) {
     }
 }
 
+//updating the edited destination in the database
 async function update(req, res) {
     try {
         const destinationData = { ...req.body };
@@ -112,11 +116,11 @@ async function update(req, res) {
                 },
             }
         );
-        //  TODO Store api key inside env as google places API
+        // Store api key inside env as google places API
         if (
             response.data.results &&
-      response.data.results[0] &&
-      response.data.results[0].photos
+            response.data.results[0] &&
+            response.data.results[0].photos
         ) {
             const photoReference = response.data.results[0].photos[0].photo_reference;
             const imageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y`;
@@ -130,6 +134,7 @@ async function update(req, res) {
     }
 }
 
+//deleting a destination
 async function removeDestination(req, res) {
     try {
         await Destination.deleteOne({ _id: req.params.id });
