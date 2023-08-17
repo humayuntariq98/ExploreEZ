@@ -3,6 +3,18 @@ A Mongoose, Express and Node based travel application which is designed to revol
 
 ## Screenshots
 
+Destinations
+![Alt text](<public/images/Screenshot 2023-08-17 at 11.42.07 AM 2.png>)
+Add Distinations 
+![Alt text](<public/images/Screenshot 2023-08-17 at 12.04.56 PM.png>)
+Add Review
+![Alt text](<public/images/Screenshot from 2023-08-17 15-17-56 (1).png>)
+ERD Diagram 
+![Alt text](<public/images/Untitled Diagram.drawio.png>)
+
+
+
+
 ## Technologies Used
 * BootStrap (CSS FrameWork)
 * CSS
@@ -12,10 +24,13 @@ A Mongoose, Express and Node based travel application which is designed to revol
 * NodeJS
 
 ## Getting Starting
-(link)[link]
+Try out our application and add your favorite destination!
+[ExploreEz](https://infinite-island-30535-6f15b733fb9d.herokuapp.com/)
 
 ## Future Features
--Google Auth - users sign in are able to edit/ create reviews
+* Star review ratings
+* Activity model
+* Collection of top picks
 
 
  
