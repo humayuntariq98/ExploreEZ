@@ -14,6 +14,7 @@ module.exports = {
     removeDestination,
 };
 
+
 //render all destinations
 async function index(req, res) {
     try {
@@ -47,7 +48,7 @@ async function create(req, res) {
             {
                 params: {
                     query: req.body.name,
-                    key: "AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y",
+                    key: process.env.GOOGLE_PLACES_API_KEY,
                 },
             }
         );
@@ -59,7 +60,7 @@ async function create(req, res) {
       response.data.results[0].photos
         ) {
             const photoReference = response.data.results[0].photos[0].photo_reference;
-            const imageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y`;
+            const imageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=${process.env.GOOGLE_PLACES_API_KEY}`;
 
             destinationData.image = imageUrl;
         }
@@ -112,18 +113,18 @@ async function update(req, res) {
             {
                 params: {
                     query: editedDestination.name,
-                    key: "AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y",
+                    key: process.env.GOOGLE_PLACES_API_KEY,
                 },
             }
         );
         // Store api key inside env as google places API
         if (
             response.data.results &&
-            response.data.results[0] &&
-            response.data.results[0].photos
+      response.data.results[0] &&
+      response.data.results[0].photos
         ) {
             const photoReference = response.data.results[0].photos[0].photo_reference;
-            const imageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=AIzaSyDow7IsqGBAMSQODNq7yFQ-LE9Gb1fH79Y`;
+            const imageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=${process.env.GOOGLE_PLACES_API_KEY}`;
             editedDestination.image = imageUrl;
         }
 

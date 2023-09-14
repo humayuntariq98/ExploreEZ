@@ -33,13 +33,12 @@ async function create(req, res) {
 async function removeReview(req, res) {
     try {
         const { destinationId, reviewId } = req.params;
-
         // Find the destination
         const destinationFound = await Destination.findOne({
             "reviews._id": reviewId,
             "reviews.user": req.user._id,
         });
-
+      
         // Find the index of the review within the reviews array
         const reviewIndex = destinationFound.reviews.findIndex(
             (review) => review._id.toString() === reviewId
@@ -50,7 +49,6 @@ async function removeReview(req, res) {
 
         // // Save the updated destination
         await destinationFound.save();
-
         res.redirect(`/destinations/${destinationId}`);
     } catch (error) {
         handleError(res, "something went wrong", error);

@@ -1,80 +1,79 @@
 <%- include("../partials/header") %>
-<section>
-    <div>Name: </div>
-    <div><%=foundDestination.name %> </div>
-    <div>Favorite spots: </div>
-    <div><%=foundDestination.favoriteSpots %></div>
-    <div> Recommended Budget: </div>
-    <div><%=foundDestination.budget %> </div>
-    <button><a href="/destinations/<%= foundDestination._id %>/edit">Update Destination</a>
-    </button>
-</section>
-<section>
-    <% if (user) { %>
-        <h1>Reviews</h1>
-        <form action="/destinations/<%=foundDestination._id%>/reviews" method="POST">
-            <label>Hotels
-            <input type="number" name="hotels" min="0" max="5" required > 
-        </label>
-        <label>Food
-            <input type="number" name="food" min="0" max="5" required >
-        </label>
-        <label>Summary
-            <input type="text" name="summary" maxlength="100" required >
-        </label>
-        <button type="submit">Submit Review</button>
-            </form>
-    <% } else { %>
-        <p>Log In to add reviews</p>
-     <%} %>
+<div class="container mt-5">
     
-</section>
-<section>
-    <% if (foundDestination.reviews.length) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Date</th>
-                    <th>Hotel</th>
-                    <th>Food</th>
-                    <th>Summary</th> 
-                    <th>Total Rating</th>
-                    <th>Delete Review</th> 
-                    <th >Update Review</th>
-                </tr>
-            </thead>
-            <tbody>
-            <% foundDestination.reviews.forEach(r=>{%>
-                <tr>
-                    <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
-                
-                    <td><%= r.postDate.toDateString() %></td>   
-                      
-                    <td> <%= r.hotels %> </td>
-                    
-                    <td> <%= r.food %> </td>
-                    
-                    <td> <%= r.summary %> </td>
-                    
-                    <td><%= (r.hotels + r.food) / 2 %></td>
-                    <% if (user?._id.equals(r.user)) { %>
-                    <td><form action="/destinations/<%=foundDestination._id%>/reviews/<%= r._id%>?_method=DELETE"
-                        class="delete-form" method="POST">
-                        <button type="submit">X</button>
-                      </form>
-                    </td>
-                    <button>
-                    <td> <a href="/destinations/<%=foundDestination._id%>/reviews/<%=r._id%>/edit">Edit</a></td>
-                </button>
-                    <% } %>
+    <div class="card mb-5">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4"><%=foundDestination.name %></h2>
+            <p class="card-text text-center">Favorite Spots: <%=foundDestination.favoriteSpots %></p>
+            <p class="card-text text-center">Recommended Budget: <%=foundDestination.budget %></p>
 
-                </tr>
-          <%  }) %>
-         </tbody>
-        </table>
-        <% }else { %>
+           
+            <div class="text-center mt-4">
+                <a href="/destinations/<%= foundDestination._id %>/edit" class="btn btn-primary">
+                    Update Destination
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="reviews-section mb-5">
+        <% if (user) { %>
+            <h3 class="mb-4">Add a Review</h3>
+            <form action="/destinations/<%=foundDestination._id%>/reviews" method="POST" class="mb-4">
+                <div class="mb-3">
+                    <label for="hotels" class="form-label">Hotel Rating</label>
+                    <input type="number" name="hotels" min="0" max="5" required class="form-control-sm" id="hotels">
+                </div>
+                <div class="mb-3">
+                    <label for="food" class="form-label">Food Rating</label>
+                    <input type="number" name="food" min="0" max="5" required class="form-control-sm" id="food">
+                </div>
+                <div class="mb-3">
+                    <label for="summary" class="form-label">Summary</label>
+                    <input type="text" name="summary" maxlength="100" required class="form-control" id="summary">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        <% } else { %>
+            <p>Log In to add reviews</p>
+        <% } %>
+        
+    
+        <% if (foundDestination.reviews.length) { %>
+            <h3 class="mb-4">Reviews</h3>
+            <% foundDestination.reviews.forEach(r => { %>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" class="img-fluid rounded-circle">
+                                <p class="text-center mt-2"><%= r.userName %></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Date: <%= r.postDate.toDateString() %></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Hotels: <%= r.hotels %></p>
+                                <p>Food: <%= r.food %></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Total Rating: <%= (r.hotels + r.food) / 2 %></p>
+                            </div>
+                        </div>
+                        <p><strong>Summary:</strong> <%= r.summary %></p>
+                        <% if (user?._id.equals(r.user)) { %>
+                            <form action="/destinations/<%=foundDestination._id%>/reviews/<%= r._id%>?_method=DELETE"
+                                class="delete-form" method="POST">
+                                <button type="submit" class="btn btn-danger btn-sm">X</button>
+                            </form>
+                            <a href="/destinations/<%=foundDestination._id%>/reviews/<%=r._id%>/edit" class="btn btn-warning btn-sm ml-2">Edit</a>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
             <p>No reviews yet!</p>
-  <%  } %>
-</section>
+        <% } %>
+    </div>
+</div>
+
 <%- include("../partials/footer") %>
