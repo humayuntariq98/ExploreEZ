@@ -25,7 +25,7 @@ ERD Diagram
 
 ## Getting Starting
 Try out our application and add your favorite destination!
-[ExploreEz](https://infinite-island-30535-6f15b733fb9d.herokuapp.com/)
+[ExploreEz](https://explorez-f516d70a2437.herokuapp.com/)
 
 ## Future Features
 * Star review ratings
